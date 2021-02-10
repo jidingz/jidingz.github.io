@@ -115,7 +115,7 @@ Deactivate and delete a no longer needed virtual environment:
   #SBATCH --output=slurm_%j.out
   #SBATCH --array=1-8
 
-    srun python myScript.py $SLURM_ARRAY_TASK_ID
+  srun python myScript.py $SLURM_ARRAY_TASK_ID
   </code>
 </pre>
 </div>
