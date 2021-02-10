@@ -31,14 +31,14 @@
   
 <pre>
   <code>
-    ## load anaconda
-    $ module load anaconda3/5.2.0
-    ## create virtual environment
-    $ conda create -n yourenvname python=x.x anaconda
-    ## activate
-    $ source activate yourenvname
-    ## install packages
-    $ conda install -n yourenvname [package]
+  ## load anaconda
+  $ module load anaconda3/5.2.0
+  ## create virtual environment
+  $ conda create -n yourenvname python=x.x anaconda
+  ## activate
+  $ source activate yourenvname
+  ## install packages
+  $ conda install -n yourenvname [package]
   </code>
 </pre>
 </div>
@@ -46,23 +46,23 @@
 Create the file runScript.sh:
 <pre>
   <code>
-    #!/bin/bash
+  #!/bin/bash
 
-    #SBATCH --time=120:00:00
-    #SBATCH --job-name=JobName
-    #SBATCH --output=slurm_%j.out
+  #SBATCH --time=120:00:00
+  #SBATCH --job-name=JobName
+  #SBATCH --output=slurm_%j.out
 
-    module purge
-    module load anaconda3/5.2.0
-    source activate yourenvname
-    python myScript.py 
+  module purge
+  module load anaconda3/5.2.0
+  source activate yourenvname
+  python myScript.py 
   </code>
 </pre>
 
 Submit using:
 <pre>
   <code>
-    $ sbatch runScript.sh
+  $ sbatch runScript.sh
   </code>
 </pre>
 
@@ -83,24 +83,24 @@ Deactivate and delete a no longer needed virtual environment:
   Create the python file myScript.py:
 <pre>
   <code>
-    import sys
-    import numpy as np
+  import sys
+  import numpy as np
     
-    Task_ID = int(sys.argv[1])
+  Task_ID = int(sys.argv[1])
 
-    # this is equivalent to Matlab's ind2sub
-    ind = np.unravel_index(Task_ID-1, [2, 2, 2], 'F')
-    ind_x = ind[0]
-    ind_y = ind[1]
-    ind_z = ind[2]
+  # this is equivalent to Matlab's ind2sub
+  ind = np.unravel_index(Task_ID-1, [2, 2, 2], 'F')
+  ind_x = ind[0]
+  ind_y = ind[1]
+  ind_z = ind[2]
 
-    # some code to assign parameter values to different ind_x, ind_y, ind_z values
-    # also do the computation
+  # some code to assign parameter values to different ind_x, ind_y, ind_z values
+  # also do the computation
 
 
-    # collect output
-    with open("result.txt", "a+") as text_file:
-        text_file.write("x: %s, y: %s, z: %s, result: %s \n" %(x, y, z, result))
+  # collect output
+  with open("result.txt", "a+") as text_file:
+      text_file.write("x: %s, y: %s, z: %s, result: %s \n" %(x, y, z, result))
 
   </code>
 </pre>
@@ -108,12 +108,12 @@ Deactivate and delete a no longer needed virtual environment:
  In the bash file:
 <pre>
   <code>
-    #!/bin/bash
+  #!/bin/bash
 
-    #SBATCH --time=120:00:00
-    #SBATCH --job-name=JobName
-    #SBATCH --output=slurm_%j.out
-    #SBATCH --array=1-8
+  #SBATCH --time=120:00:00
+  #SBATCH --job-name=JobName
+  #SBATCH --output=slurm_%j.out
+  #SBATCH --array=1-8
 
     srun python myScript.py $SLURM_ARRAY_TASK_ID
   </code>
