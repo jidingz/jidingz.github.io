@@ -34,11 +34,11 @@
   ## load anaconda
   $ module load anaconda3/5.2.0
   ## create virtual environment
-  $ conda create -n yourenvname python=x.x anaconda
+  $ conda create -n myEnv python=3.6 anaconda
   ## activate
-  $ source activate yourenvname
+  $ source activate myEnv
   ## install packages
-  $ conda install -n yourenvname [package]
+  $ conda install -n myEnv [package]
   </code>
 </pre>
 </div>
@@ -54,7 +54,7 @@ Create the file runScript.sh:
 
   module purge
   module load anaconda3/5.2.0
-  source activate yourenvname
+  source activate myEnv
   python myScript.py 
   </code>
 </pre>
@@ -70,7 +70,7 @@ Deactivate and delete a no longer needed virtual environment:
 <pre>
   <code>
   $ source deactivate
-  $ conda remove -n yourenvname -all
+  $ conda remove -n myEnv -all
   </code>
 </pre>
 
