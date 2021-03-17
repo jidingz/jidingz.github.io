@@ -124,7 +124,7 @@ srun python myScript.py $SLURM_ARRAY_TASK_ID
 
 
 <div >
-   <p><b>Using Jupyter Notebook</b></p>
+   <p><b>Using Jupyter Lab</b></p>
   
   <p>First create a virtual enviroment (with installed libraries). Then create the bash file jupyter.sh (require 1 GPU):</p>
 <pre>
@@ -155,7 +155,7 @@ echo    "  Open this address in a browser on local host; see token below"
 echo    "  ------------------------------------------------------------"
 echo -e "  localhost:$ipnport                                      \n\n"
 
-jupyter-notebook --no-browser --port=$ipnport --ip=$ipnip
+jupyter-lab --no-browser --port=$ipnport --ip=$ipnip
 </code>
 </pre>
 and submit using
