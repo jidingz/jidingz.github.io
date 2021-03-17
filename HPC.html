@@ -105,7 +105,8 @@ with open("result.txt", "a+") as text_file:
 </code>
 </pre>
 
- In the bash file:
+In the bash file:
+
 <pre>
 <code>
 #!/bin/bash
@@ -119,6 +120,63 @@ srun python myScript.py $SLURM_ARRAY_TASK_ID
 </code>
 </pre>
 </div>
+
+
+
+<div >
+   <p><b>Using Jupyter Notebook</b></p>
+  
+  <p>First create a virtual enviroment (with installed libraries). Then create the bash file jupyter.sh (require 1 GPU):</p>
+<pre>
+<code>
+#!/bin/bash
+
+#SBATCH --partition=aquila
+#SBATCH --nodelist=agpu1
+#SBATCH --gres=gpu:1
+#SBATCH --job-name jupyter
+#SBATCH --output jupyter-log.txt
+
+module purge
+module load python/gnu/3.7.3
+module load anaconda3/5.2.0
+source activate myEnv
+
+
+XDG_RUNTIME_DIR=""
+ipnport=$(shuf -i8000-9999 -n1)
+ipnip=$(hostname -i)
+
+echo -e "\n"
+echo    "  Paste ssh command in a terminal on local host (i.e., laptop)"
+echo    "  ------------------------------------------------------------"
+echo -e "  ssh -N -L $ipnport:$ipnip:$ipnport $USER@hpc.shanghai.nyu.edu\n"
+echo    "  Open this address in a browser on local host; see token below"
+echo    "  ------------------------------------------------------------"
+echo -e "  localhost:$ipnport                                      \n\n"
+
+jupyter-notebook --no-browser --port=$ipnport --ip=$ipnip
+</code>
+</pre>
+and submit using
+<pre>
+<code>
+$ sbatch jupyter.sh
+$ cat jupyter-log.txt
+</code>
+</pre>
+Then open another ssh terminal and paste the line similar to:
+<pre>
+<code>
+$ ssh -N -L $ipnport:$ipnip:$ipnport $USER@hpc.shanghai.nyu.edu
+</code>
+</pre>
+Finally, open a browser with the following address: <tt>localhost:$ipnport</tt>.
+</div>
+
+
+<br>
+<br>
 
 
 <div >
