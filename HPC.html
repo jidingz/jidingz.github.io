@@ -132,7 +132,7 @@ srun python myScript.py $SLURM_ARRAY_TASK_ID
 <div >
    <p><b>Using Jupyter Lab</b></p>
   
-  <p>First create a virtual enviroment (with installed libraries). Then create the bash file jupyter.sh (require 1 GPU):</p>
+  <p>First create a virtual enviroment (with installed libraries). Then create the bash file jupyter.sh (request 1 GPU):</p>
 <pre>
 <code>
 #!/bin/bash
@@ -142,6 +142,7 @@ srun python myScript.py $SLURM_ARRAY_TASK_ID
 #SBATCH --gres=gpu:1
 #SBATCH --job-name jupyter
 #SBATCH --output jupyter-log.txt
+#SBATCH --time=120:00:00
 
 module purge
 module load python/gnu/3.7.3
