@@ -178,8 +178,31 @@ Then open another ssh terminal and paste the line in jupyter-log.txt that is sim
 $ ssh -N -L $ipnport:$ipnip:$ipnport $USER@hpc.shanghai.nyu.edu
 </code>
 </pre>
-Finally, open a browser with the following address: <tt>localhost:$ipnport</tt>.
+Finally, open a browser with the following address:
+<pre>
+<code>
+localhost:$ipnport
+</code>
+</pre>
 </div>
+
+
+
+<div >
+   <p><b>Installing R packages</b></p>
+  
+  <p>In the shell:</p>
+
+<pre>
+<code>
+$ module load R/gnu/3.6.3
+$ R
+> install.packages("myPackage")
+</code>
+</pre>
+and answer "yes".
+</div>
+
 
 
 <br>
