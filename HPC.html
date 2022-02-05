@@ -143,6 +143,7 @@ python myScript.py $SLURM_ARRAY_TASK_ID
 #SBATCH --job-name jupyter
 #SBATCH --output jupyter-log.txt
 #SBATCH --time=120:00:00
+#SBATCH --mem=80GB
 
 module purge
 module load python/gnu/3.7.3
