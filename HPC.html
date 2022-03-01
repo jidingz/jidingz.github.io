@@ -40,7 +40,7 @@
 ## load anaconda
 $ module load anaconda3/5.2.0
 ## create virtual environment
-$ conda create -n myEnv python=3.6 anaconda
+$ conda create -n myEnv python=3.7 anaconda
 ## activate
 $ source activate myEnv
 ## install packages
@@ -60,6 +60,7 @@ Create the file runScript.sh:
 
 module purge
 module load anaconda3/5.2.0
+module load python/gnu/3.7.3
 source activate myEnv
 python myScript.py 
 </code>
