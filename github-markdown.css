@@ -212,7 +212,7 @@
 }
 
 .markdown-body a {
-  color: #0366d6;
+  color: #8C1D40;
   text-decoration: none;
 }
 
@@ -678,7 +678,7 @@
 .markdown-body :checked+.radio-label {
   position: relative;
   z-index: 1;
-  border-color: #0366d6;
+  border-color: #8C1D40;
 }
 
 .markdown-body .task-list-item {
