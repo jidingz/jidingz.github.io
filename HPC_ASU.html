@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Jiding Zhang</title>
+    <link rel="stylesheet" href="github-markdown.css">
+    <style>
+      body {
+        box-sizing: border-box;
+        min-width: 200px;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 45px;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="markdown-body">
+      <p align="center">
+        <h3>Useful Commands for ASU Sol</h3>
+      </p>
+
+
+
+
+<br>
+
+<div >
+   <p>The official documentation: <a href="https://asurc.atlassian.net/wiki/spaces/RC/overview"><tt>https://asurc.atlassian.net/wiki/spaces/RC/overview</tt></a></p>
+</div>
+
+<br>
+
+<div >
+   <p><b>Creating Virtual Environment for Jupyter</b></p>
+
+In the shell:
+<pre>
+<code>
+# begin an interactive session and request a GPU node to install the environment
+$ interactive -G 1
+$ module purge
+$ module load mamba/latest
+# clone an environment, e.g., pytorch GPU version
+$ mamba create --name myenv --clone pytorch-gpu-2.2.1
+$ source activate myenv
+# install other packages
+$ mamba install -c conda-forge [package]
+# make sure the environment is available for Jupyter
+$ mkjupy myenv "myenv"
+</code>
+</pre>
+Request a Jupyter session through: <a href="https://ood06.sol.rc.asu.edu/pun/sys/dashboard/batch_connect/sessions"><tt>https://ood06.sol.rc.asu.edu/pun/sys/dashboard/batch_connect/sessions</tt></a>
+Choose the installed environment in Launcher.
+</div>
+
+
+<br>
+<br>
+
+
+<div >
+   <a href="./index.html">back to homepage</a>
+</div>
+
+<br>
+
+<div id="footer" ALIGN="Middle">
+<p><a href="mailto:jiding.zhang@asu.edu"><img src="./figures/mail.svg" width="20"/></a></p>
+</div>
+
+
+
+    </article>
+  </body>
+</html>
